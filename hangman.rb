@@ -14,4 +14,7 @@ class Word
 			false
 		end
 	end
+
+
+	
 end
