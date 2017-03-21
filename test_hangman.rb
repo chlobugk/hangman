@@ -83,5 +83,11 @@ class TestHangman < MiniTest::Test
 	 	assert_equal(false, word.lose?(guesses)) #false that they lose (they win)
 	 end
 
+	 def test_get_pos_1
+	 	word = Word.new('box')
+	 	guess = 'o'
+	 	assert_equal('_o_', word.fill_in(guess))
+	 end
+
 
 end

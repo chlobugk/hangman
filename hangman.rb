@@ -53,4 +53,23 @@ class Word
 	end
 
 
+	def fill_in(guess)
+	word_array = secret_word.chars
+	fill_array = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_')
+	index_hash = Hash[word_array.map.with_index.to_a]
+
+		if secret_word.include?(guess)
+			pos = index_hash[guess]
+			fill_array[pos] = guess
+		else
+			fill_array
+		end
+		fill_array
+
+		
+
+	end
+
+
+
 end
