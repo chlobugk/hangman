@@ -8,13 +8,12 @@ class Word
 	end
 
 	def valid_input?
-		if secret_word[/[a-zA-Z]+/]  == secret_word
-			true
-		else
-			false
-		end
+		secret_word[/[a-zA-Z]+/]  == secret_word	
 	end
 
 
-	
+	def letter_guess?(guess)
+		secret_word.include?(guess)
+	end
+
 end

@@ -23,7 +23,23 @@ class TestHangman < MiniTest::Test
 	 	assert_equal(false, word.valid_input?)
 	 end
 
-	 # def test_wrong_letter_guess_false
-	 # 	word = Word.new('box')
+	 def test_wrong_letter_guess_false
+	 	word = Word.new('box')
+	 	guess = 'a'
+	 	assert_equal(false, word.letter_guess?(guess))
+	 end
+
+	 def test_correct_letter_guess_true
+	 	word = Word.new('box')
+	 	guess = 'o'
+	 	assert_equal(true, word.letter_guess?(guess))
+	 end
+
+	 def test_incorrect_number_guess_false
+	 	word = Word.new('box')
+	 	guess = '3'
+	 	assert_equal(false, word.letter_guess?(guess))
+	 end
+
 
 end
