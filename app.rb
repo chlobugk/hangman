@@ -1,4 +1,5 @@
 require 'sinatra'
+require_relative 'hangman'
 
 get '/' do
 	erb :names
@@ -12,9 +13,8 @@ end
 
 post '/secret_word' do
 	backend_secret_word = params[:secret_word_input]
-	secret_word_array = backend_secret_word.chars #['b', 'o', 'x']
-	secret_word_underscores = backend_secret_word.gsub(/[a..z]/, '_') #['_', '_', '_']
-		
+	
+
 
 
 

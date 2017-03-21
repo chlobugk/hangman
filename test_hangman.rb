@@ -86,7 +86,25 @@ class TestHangman < MiniTest::Test
 	 def test_get_pos_1
 	 	word = Word.new('box')
 	 	guess = 'o'
-	 	assert_equal('_o_', word.fill_in(guess))
+	 	assert_equal([1], word.find_pos(guess))
+	 end
+
+	 def test_get_2_letters
+	 	word = Word.new('food')
+	 	guess = 'o'
+	 	assert_equal([1, 2], word.find_pos(guess))
+	 end
+
+	 def test_no_letters
+	 	word = Word.new('food')
+	 	guess = 'a'
+	 	assert_equal([], word.find_pos(guess))
+	 end
+
+	 def test_get_pos_7_with_t
+	 	word = Word.new('chocolate')
+	 	guess = 't'
+	 	assert_equal([7], word.find_pos(guess))
 	 end
 
 
