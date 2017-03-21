@@ -41,5 +41,29 @@ class TestHangman < MiniTest::Test
 	 	assert_equal(false, word.letter_guess?(guess))
 	 end
 
+	 def test_win_with_3_guesses
+	 	word = Word.new('box')
+	 	guesses = ['b', 'o', 'x']
+	 	assert_equal(true, word.win?(guesses))
+	 end
+
+	 def test_win_with_3_guesses
+	 	word = Word.new('box')
+	 	guesses = ['b', 'o', 'x']
+	 	assert_equal(true, word.win?(guesses))
+	 end
+
+	 def test_no_win_with_3_guesses
+	 	word = Word.new('box')
+	 	guesses = ['b', 'o', 'y']
+	 	assert_equal(false, word.win?(guesses))
+	 end
+
+	 def test_win_with_4_guesses
+	 	word = Word.new('box')
+	 	guesses = ['b', 'o', 'y', 'x']
+	 	assert_equal(true, word.win?(guesses))
+	 end
+
 
 end
