@@ -65,5 +65,23 @@ class TestHangman < MiniTest::Test
 	 	assert_equal(true, word.win?(guesses))
 	 end
 
+	 def test_lose_with_6_incorrect_guesses
+	 	word = Word.new('box')
+	 	guesses = ['a', 'e', 's', 't', 'i', 'z']
+	 	assert_equal(true, word.lose?(guesses))
+	 end
+
+	 def test_lose_with_8_guesses
+	 	word = Word.new('box')
+	 	guesses = ['a', 'e', 'b', 's', 't', 'i', 'o', 'y']
+	 	assert_equal(true, word.lose?(guesses))
+	 end
+
+	 def test_win_with_8_guesses
+	 	word = Word.new('box')
+	 	guesses = ['a', 'e', 'b', 's', 't', 'i', 'o', 'x']
+	 	assert_equal(false, word.lose?(guesses)) #false that they lose (they win)
+	 end
+
 
 end

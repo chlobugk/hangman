@@ -17,9 +17,10 @@ class Word
 		secret_word.include?(guess)
 	end
 
+
 	def win?(guesses)
-	results = false
-	correct = 0
+		results = false
+		correct = 0
 
 		guesses.each do |guess|
 
@@ -33,11 +34,23 @@ class Word
 		results
 	end
 
+	#dont combine win and lose because we want false if not yet a win, but that doesnt mean game over
 
-# incorrect += 1
-# 				if incorrect == 6
-# 					results = false
-# 				end
+	def lose?(guesses)
+		results = false
+		incorrect = 0
+
+		guesses.each do |guess|
+
+			if letter_guess?(guess) == false
+				incorrect += 1
+				if incorrect == 6
+					results = true #true that they lose
+				end
+			end
+		end
+		results
+	end
 
 
 end
