@@ -5,13 +5,13 @@ class Word
 
 	def initialize(word)
 		@secret_word = word
-		@underscores = underscores
-		@wrong = 0
+		@underscores = underscores_function
+		@wrong = 6
 
 	end
 
-	def underscores
-		underscores = Array.new(secret_word.length, '_')
+	def underscores_function
+		underscores_function = Array.new(secret_word.length, '_ ')
 	end
 
 
@@ -61,15 +61,15 @@ class Word
 
 	def guess_letter(guess)
 
-		if word.include?(guess)
+		if secret_word.include?(guess)
 
-			word.each_char.with_index do |val, pos|
+			secret_word.each_char.with_index do |val, pos|
 				if val == guess
 					@underscores[pos] = val
 				end
 			end
 		else
-			@wrong += 1
+			@wrong -= 1
 		end
 
 	end

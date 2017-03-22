@@ -107,5 +107,4 @@ class TestHangman < MiniTest::Test
 	 	assert_equal([7], word.find_pos(guess))
 	 end
 
-
 end

@@ -20,15 +20,14 @@ end
 
 
 post '/secret_word' do
-	secret_word = params[:secret_word_input]
+	session[:secret_word] = params[:secret_word_input]
 	session[:hangman] = Word.new(params[:secret_word_input])
-	session[:underscores] = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_ ')
-	session[:underscores].chars
+	# session[:underscores] = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_ ')
+	# session[:underscores].chars
 
 		if session[:hangman].valid_input? == false
 			redirect '/secret_word'
 		end
-		session[:length] = session[:hangman].underscores.count
 
 		redirect '/game'
 	
@@ -36,26 +35,26 @@ end
 
 
 get '/game' do
-	underscore_letters = session[:hangman].underscores.join
-	session[:wrong] = session[:hangman].wrong
+	session[:underscores] = session[:hangman].underscores.join
+	session[:countdown] = session[:hangman].wrong
 
-		if session[:hangman].wrong == 6
-					erb :lose
-				
+		if session[:countdown] == 0
+			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
+		else
+			erb :guess, :locals => {:guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
 		end
-	erb :guess, :locals => {:guess => session[:guess], :wrong => session[:wrong], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
 end
 
 
-
 post '/guess' do
-	secret_word = params[:secret_word_input]
 	session[:guess] = params[:guess_input]
+	session[:hangman].guess_letter(session[:guess])
 
-		if session[:hangman].underscores.include?('_')
-			redirect '/game'
+		if session[:hangman].underscores.include?('_ ')
+			redirect '/game' 
 		else
-			erb :win
+			erb :win, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name]}
+		end
 			# index_array = []
 			# word_array = session[:hangman].to_s.chars
 			# index_array = word_array.each_index.select{|i| word_array[i] == guess}
@@ -64,9 +63,7 @@ post '/guess' do
 			# 	underscore = session[:underscores]
 			# 	underscore[ind] = guess
 			# end	
-		end
-
-	
+		
 end
 
 
