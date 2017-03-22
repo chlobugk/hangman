@@ -1,10 +1,17 @@
 class Word
 # 6 incorrect = lose
 
-	attr_accessor :secret_word
+	attr_accessor :secret_word, :underscores, :wrong
 
 	def initialize(word)
 		@secret_word = word
+		@underscores = underscores
+		@wrong = 0
+
+	end
+
+	def underscores
+		underscores = Array.new(secret_word.length, '_')
 	end
 
 
@@ -39,7 +46,6 @@ class Word
 	def lose?(guesses)
 		results = false
 		incorrect = 0
-
 		guesses.each do |guess|
 
 			if letter_guess?(guess) == false
@@ -53,10 +59,29 @@ class Word
 	end
 
 
-	def find_pos(guess)
-	# word_array = secret_word.chars
+	def guess_letter(guess)
 
-	index_array = secret_word.chars.each_index.select{|i| secret_word.chars[i] == guess}
+		if word.include?(guess)
+
+			word.each_char.with_index do |val, pos|
+				if val == guess
+					@underscores[pos] = val
+				end
+			end
+		else
+			@wrong += 1
+		end
+
+	end
+
+
+
+	def find_pos(guess)
+
+
+	word_array = secret_word.chars
+
+	index_array = word_array.each_index.select{|i| word_array[i] == guess}
 
 		# result = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_')
 	end
