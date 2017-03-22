@@ -54,9 +54,9 @@ class Word
 
 
 	def find_pos(guess)
-	word_array = secret_word.chars
+	# word_array = secret_word.chars
 
-	index_array = word_array.each_index.select{|i| word_array[i] == guess}
+	index_array = secret_word.chars.each_index.select{|i| secret_word.chars[i] == guess}
 
 		# result = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_')
 	end
