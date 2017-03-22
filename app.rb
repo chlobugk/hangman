@@ -8,8 +8,8 @@ get '/' do
 end
 
 post '/names' do
-	session[:p1_name] = params[:p1_name_input]
-	session[:p2_name] = params[:p2_name_input]
+	session[:p1_name] = params[:p1_name_input].capitalize!
+	session[:p2_name] = params[:p2_name_input].capitalize!
 	erb :secret_word, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name]}
 end
 
@@ -21,7 +21,7 @@ end
 
 post '/secret_word' do
 	session[:secret_word] = params[:secret_word_input]
-	session[:hangman] = Word.new(params[:secret_word_input])
+	session[:hangman] = Word.new(params[:secret_word_input].downcase!)
 	# session[:underscores] = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_ ')
 	# session[:underscores].chars
 
