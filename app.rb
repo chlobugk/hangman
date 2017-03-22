@@ -22,8 +22,6 @@ end
 post '/secret_word' do
 	session[:secret_word] = params[:secret_word_input]
 	session[:hangman] = Word.new(params[:secret_word_input].downcase!)
-	# session[:underscores] = secret_word.gsub(/[abcdefghijklmnopqrstuvwxyz]/, '_ ')
-	# session[:underscores].chars
 
 		if session[:hangman].valid_input? == false
 			redirect '/secret_word'
