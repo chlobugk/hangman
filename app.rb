@@ -27,15 +27,30 @@ post '/secret_word' do
 			redirect '/secret_word'
 		end
 
-		redirect '/game'
+		redirect '/firstguess'
 	
+end
+
+
+get '/firstguess' do
+	session[:underscores] = session[:hangman].underscores.join
+	session[:already] = [].join
+	session[:countdown] = session[:hangman].wrong
+	# session[:already] = session[:hangman].already_guessed(session[:guess])
+
+		if session[:countdown] == 0
+			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
+		else
+			erb :guess, :locals => {:already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
+		end
 end
 
 
 get '/game' do
 	session[:underscores] = session[:hangman].underscores.join
+	session[:already] = session[:hangman].already_guessed(session[:guess]).join(', ')
 	session[:countdown] = session[:hangman].wrong
-	session[:already] = session[:hangman].already_guessed(session[:guess])
+	# session[:already] = session[:hangman].already_guessed(session[:guess])
 
 		if session[:countdown] == 0
 			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
