@@ -7,11 +7,17 @@ get '/' do
 	erb :names
 end
 
+
 post '/names' do
 	session[:p1_name] = params[:p1_name_input].capitalize
 	session[:p2_name] = params[:p2_name_input].capitalize
+
+	if session[:p1_name] == '' || session[:p2_name] == ''
+		redirect '/'
+	end
 	erb :secret_word, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name]}
 end
+
 
 get '/secret_word' do
 
