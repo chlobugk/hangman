@@ -4,7 +4,7 @@ font-size: 5vh
 }*/
 
 .font{
-color: white;
+color: green;
 font-family: verdana
 }
 /*
@@ -17,13 +17,15 @@ background-color: lightsteelblue
 }*/
 
 .background{
-background-color: black;
+background-color: gold;
 border-style: double;
 border-color: white;
 border-width: 15
 }
 
 .image{
-height: 15rem;
+left: 15%;
+position: absolute;
+height: 16rem;
 width: auto
 }
