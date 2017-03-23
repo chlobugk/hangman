@@ -21,7 +21,7 @@ end
 
 post '/secret_word' do
 	session[:secret_word] = params[:secret_word_input]
-	session[:hangman] = Word.new(params[:secret_word_input].downcase)
+	session[:hangman] = Word.new(params[:secret_word_input].upcase)
 
 		if session[:hangman].valid_input? == false
 			redirect '/secret_word'
