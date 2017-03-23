@@ -2,32 +2,111 @@
 
 <form action='guess' method='post'>
 	<select name='guess_input'>
-		<option value='A'>A</option>
-		<option value='B'>B</option>
-		<option value='C'>C</option>
-		<option value='D'>D</option>
-		<option value='E'>E</option>
-		<option value='F'>F</option>
-		<option value='G'>G</option>
-		<option value='H'>H</option>
-		<option value='I'>I</option>
-		<option value='J'>J</option>
-		<option value='K'>K</option>
-		<option value='L'>L</option>
-		<option value='M'>M</option>
-		<option value='N'>N</option>
-		<option value='O'>O</option>
-		<option value='P'>P</option>
-		<option value='Q'>Q</option>
-		<option value='R'>R</option>
-		<option value='S'>S</option>
-		<option value='T'>T</option>
-		<option value='U'>U</option>
-		<option value='V'>V</option>
-		<option value='W'>W</option>
-		<option value='X'>X</option>
-		<option value='Y'>Y</option>
-		<option value='Z'>Z</option>
+
+		<%if already.include?('A') == false %>
+			<option value='A'>A</option>
+		<% end %>
+
+		<%if already.include?('B') == false %>
+			<option value='B'>B</option>
+		<% end %>
+
+		<%if already.include?('C') == false %>
+			<option value='C'>C</option>
+		<% end %>
+
+		<%if already.include?('D') == false %>
+			<option value='D'>D</option>
+		<% end %>
+
+		<%if already.include?('E') == false %>
+			<option value='E'>E</option>
+		<% end %>
+
+		<%if already.include?('F') == false %>
+			<option value='F'>F</option>
+		<% end %>
+
+		<%if already.include?('G') == false %>
+			<option value='G'>G</option>
+		<% end %>
+
+		<%if already.include?('H') == false %>
+			<option value='H'>H</option>
+		<% end %>
+
+		<%if already.include?('I') == false %>
+			<option value='I'>I</option>
+		<% end %>
+
+		<%if already.include?('J') == false %>
+			<option value='J'>J</option>
+		<% end %>
+
+		<%if already.include?('K') == false %>
+			<option value='K'>K</option>
+		<% end %>
+
+		<%if already.include?('L') == false %>
+			<option value='L'>L</option>
+		<% end %>
+
+		<%if already.include?('M') == false %>
+			<option value='M'>M</option>
+		<% end %>
+
+		<%if already.include?('N') == false %>
+			<option value='N'>N</option>
+		<% end %>
+
+		<%if already.include?('O') == false %>
+			<option value='O'>O</option>
+		<% end %>
+
+		<%if already.include?('P') == false %>
+			<option value='P'>P</option>
+		<% end %>
+
+		<%if already.include?('Q') == false %>
+			<option value='Q'>Q</option>
+		<% end %>
+
+		<%if already.include?('R') == false %>
+			<option value='R'>R</option>
+		<% end %>
+
+		<%if already.include?('S') == false %>
+			<option value='S'>S</option>
+		<% end %>
+
+		<%if already.include?('T') == false %>
+			<option value='T'>T</option>
+		<% end %>
+
+		<%if already.include?('U') == false %>
+			<option value='U'>U</option>
+		<% end %>
+
+		<%if already.include?('V') == false %>
+			<option value='V'>V</option>
+		<% end %>
+
+		<%if already.include?('W') == false %>
+			<option value='W'>W</option>
+		<% end %>
+
+		<%if already.include?('X') == false %>
+			<option value='X'>X</option>
+		<% end %>
+
+		<%if already.include?('Y') == false %>
+			<option value='Y'>Y</option>
+		<% end %>
+
+		<%if already.include?('Z') == false %>
+			<option value='Z'>Z</option>
+		<% end %>
+
 	</select>
 	<input type='text' name='p2_name_input' value= <%=p2%> hidden>
 	<input name='underscores' value= <%=underscores%> hidden>
