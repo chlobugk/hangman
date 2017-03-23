@@ -4,6 +4,7 @@ require_relative 'hangman'
 enable :sessions
 
 get '/' do
+	session[:image] = nil
 	erb :names
 end
 
@@ -42,12 +43,12 @@ get '/firstguess' do
 	session[:underscores] = session[:hangman].underscores.join
 	session[:already] = [].join
 	session[:countdown] = session[:hangman].wrong
-	# session[:already] = session[:hangman].already_guessed(session[:guess])
+	session[:image] = '/img/full_rose.png'
 
 		if session[:countdown] == 0
 			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
 		else
-			erb :guess, :locals => {:already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
+			erb :guess, :locals => {:image => session[:image], :already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
 		end
 end
 
@@ -56,12 +57,14 @@ get '/game' do
 	session[:underscores] = session[:hangman].underscores.join
 	session[:already] = session[:hangman].already_guessed(session[:guess]).join(', ')
 	session[:countdown] = session[:hangman].wrong
-	# session[:already] = session[:hangman].already_guessed(session[:guess])
+	image_array = ['/img/5_rose.png', '/img/4_rose.png', '/img/3_rose.png', '/img/2_rose.png', '/img/1_rose.png', '/img/full_rose.png']
+	session[:image] = image_array[session[:countdown] - 1]
+
 
 		if session[:countdown] == 0
 			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
 		else
-			erb :guess, :locals => {:already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
+			erb :guess, :locals => {:image => session[:image], :already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
 		end
 end
 

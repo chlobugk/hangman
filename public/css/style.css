@@ -23,8 +23,7 @@ border-color: white;
 border-width: 15
 }
 
-/*.image{
-image-: url(/css/coins_image.gif);
+.image{
 height: 15rem;
-width: 16rem
-}*/
+width: auto
+}

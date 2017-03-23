@@ -93,4 +93,28 @@ class Word
 
 
 
+
+	
+# <% if wrong == 6 %>
+# 	<img class = "image" src= '/img/full_rose.png'>
+
+# <% elsif wrong == 5 %>
+# 	<img class = "image" src= '/img/1_rose.png'>
+
+# <% elsif wrong == 4 %>
+# 	<img class = "image" src= '/img/2_rose.png'>
+
+# <% elsif wrong == 3 %>
+# 	<img class = "image" src= '/img/3_rose.png'>
+
+# <% elsif wrong == 2 %>
+# 	<img class = "image" src= '/img/4_rose.png'>
+
+# <% elsif wrong == 1 %>
+# 	<img class = "image" src= '/img/5_rose.png'>
+
+# <% end %>
+
+
+
 end

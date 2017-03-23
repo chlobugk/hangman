@@ -118,25 +118,10 @@
 	Remaining petals: <%=wrong%> <p>
 	You have already guessed: <%=already%></h4></center>
 
-<% if wrong == 6 %>
-	<img style="height:15rem;width:auto" src= '/img/full_rose.png'>
-
-<% elsif wrong == 5 %>
-	<img style="height:15rem;width:auto"src= '/img/1_rose.png'>
-
-<% elsif wrong == 4 %>
-	<img style="height:15rem;width:auto"src= '/img/2_rose.png'>
-
-<% elsif wrong == 3 %>
-	<img style="height:15rem;width:auto"src= '/img/3_rose.png'>
-
-<% elsif wrong == 2 %>
-	<img style="height:15rem;width:auto"src= '/img/4_rose.png'>
-
-<% elsif wrong == 1 %>
-	<img style="height:15rem;width:auto"src= '/img/5_rose.png'>
-
+<% if  wrong > 0 %>
+	<img class = "image" src= <%=image%> >
 <% end %>
+
 
 
 
