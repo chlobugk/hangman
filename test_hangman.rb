@@ -47,12 +47,6 @@ class TestHangman < MiniTest::Test
 	 	assert_equal(true, word.win?(guesses))
 	 end
 
-	 def test_win_with_3_guesses
-	 	word = Word.new('box')
-	 	guesses = ['b', 'o', 'x']
-	 	assert_equal(true, word.win?(guesses))
-	 end
-
 	 def test_no_win_with_3_guesses
 	 	word = Word.new('box')
 	 	guesses = ['b', 'o', 'y']
@@ -105,6 +99,14 @@ class TestHangman < MiniTest::Test
 	 	word = Word.new('chocolate')
 	 	guess = 't'
 	 	assert_equal([7], word.find_pos(guess))
+	 end
+
+	 def test_already_guessed_letters
+	 	word = Word.new('chocolate')
+	 	word.already_guessed('t')
+	 	word.already_guessed('a')
+	 	word.already_guessed('d')
+	 	assert_equal(['t', 'a', 'd'], word.already)
 	 end
 
 end

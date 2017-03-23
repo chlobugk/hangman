@@ -35,11 +35,12 @@ end
 get '/game' do
 	session[:underscores] = session[:hangman].underscores.join
 	session[:countdown] = session[:hangman].wrong
+	session[:already] = session[:hangman].already_guessed(session[:guess])
 
 		if session[:countdown] == 0
 			erb :lose, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name], :secret => session[:secret_word]}
 		else
-			erb :guess, :locals => {:guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
+			erb :guess, :locals => {:already => session[:already], :guess => session[:guess], :wrong => session[:countdown], :underscores => session[:underscores], :secret => session[:hangman], :p1 => session[:p1_name], :p2 => session[:p2_name]}
 		end
 end
 

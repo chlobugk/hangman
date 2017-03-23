@@ -1,13 +1,18 @@
 class Word
 # 6 incorrect = lose
 
-	attr_accessor :secret_word, :underscores, :wrong
+	attr_accessor :secret_word, :underscores, :wrong, :already
 
 	def initialize(word)
 		@secret_word = word
 		@underscores = underscores_function
 		@wrong = 6
+		@already = []
 
+	end
+
+	def already_guessed(guess)
+		already << guess
 	end
 
 	def underscores_function
