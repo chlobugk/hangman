@@ -78,15 +78,7 @@ post '/guess' do
 		else
 			erb :win, :locals => {:p1 => session[:p1_name], :p2 => session[:p2_name]}
 		end
-			# index_array = []
-			# word_array = session[:hangman].to_s.chars
-			# index_array = word_array.each_index.select{|i| word_array[i] == guess}
-
-			# index_array.each do |ind|
-			# 	underscore = session[:underscores]
-			# 	underscore[ind] = guess
-			# end	
-		
+			
 end
 
 
